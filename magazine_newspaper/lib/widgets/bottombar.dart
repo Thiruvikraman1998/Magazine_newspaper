@@ -14,6 +14,14 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   int _selectedIndex = 0;
   static final List<Widget> screens = <Widget>[
     const OnBoardingScreen(),

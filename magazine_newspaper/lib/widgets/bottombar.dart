@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
+import 'package:magazine_newspaper/screens/collections.dart';
+import 'package:magazine_newspaper/screens/onboarding.dart';
+import 'package:magazine_newspaper/screens/srz.dart';
+import 'package:magazine_newspaper/screens/stories.dart';
+import 'package:magazine_newspaper/screens/unlimited.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -9,15 +14,31 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
+  int _selectedIndex = 0;
+  static final List<Widget> screens = <Widget>[
+    const OnBoardingScreen(),
+    const UnlimitedScreen(),
+    const StoriesScreen(),
+    const SrzScreen(),
+    const CollectionsScreen(),
+  ];
+
+  void _onTapItem(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text("Onboarding screen"),
-      ),
+      body: screens[_selectedIndex],
       bottomNavigationBar: AnimatedContainer(
         duration: const Duration(milliseconds: 2000),
         child: BottomNavigationBar(
+            onTap:
+                _onTapItem, // sends the index of the icon that is pressed to _onTapItem(int index) method.
+            currentIndex: _selectedIndex,
             unselectedItemColor: Colors.grey[700],
             selectedItemColor: const Color(0xFF2653B4),
             showSelectedLabels: true,

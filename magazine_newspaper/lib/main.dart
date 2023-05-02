@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:magazine_newspaper/widgets/bottombar.dart";
+import 'package:magazine_newspaper/menu_bar/bottombar.dart';
 
 void main(List<String> args) {
   runApp(const MagazineApp());
